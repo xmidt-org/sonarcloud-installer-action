@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2021 Comcast Cable Communications Management, LLC
+# SPDX-License-Identifier: Apache-2.0
+
+name: 'Sonarcloud Installer for C/C++'
+description: 'Provide a safe and uniform way of installing the tooling for C/C++'
+branding:
+  icon: archive
+  color: 'green'
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        ${{ github.action_path }}/get_sonarcloud.sh
