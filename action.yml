@@ -11,9 +11,15 @@ input:
     description: 'The working directory used for building.'
     required: false
     default: '.'
+  version:
+    description: 'The specific version of the cli if needed.'
+    required: false
+    default: '*'
 runs:
   using: "composite"
   steps:
     - shell: bash
       run: |
-        ${{ github.action_path }}/get_sonarcloud.sh ${{ inputs.working-directory }}
+        ${{ github.action_path }}/get_sonarcloud.sh \
+          ${{ inputs.working-directory }}  \
+          ${{ inputs.version }}
