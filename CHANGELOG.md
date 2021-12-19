@@ -9,6 +9,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- A working directory option.
+- Print out the version of the file.
+- Specific versions or globs can be passed in.  Examples: `4.5.*` or `4.*` or `1.2.3`.
 
 ## [1.0.0]
 ### Added

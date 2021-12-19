@@ -6,9 +6,14 @@ description: 'Provide a safe and uniform way of installing the tooling for C/C++
 branding:
   icon: archive
   color: 'green'
+input:
+  working-directory:
+    description: 'The working directory used for building.'
+    required: false
+    default: '.'
 runs:
   using: "composite"
   steps:
     - shell: bash
       run: |
-        ${{ github.action_path }}/get_sonarcloud.sh
+        ${{ github.action_path }}/get_sonarcloud.sh ${{ inputs.working-directory }}
