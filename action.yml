@@ -22,4 +22,4 @@ runs:
       run: |
         ${{ github.action_path }}/get_sonarcloud.sh \
           ${{ inputs.working-directory }}  \
-          ${{ inputs.version }}
+          '${{ inputs.version }}'
