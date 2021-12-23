@@ -6,7 +6,7 @@ description: 'Provide a safe and uniform way of installing the tooling for C/C++
 branding:
   icon: archive
   color: 'green'
-input:
+inputs:
   working-directory:
     description: 'The working directory used for building.'
     required: false
