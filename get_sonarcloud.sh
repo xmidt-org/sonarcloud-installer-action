@@ -18,8 +18,15 @@ getwrapper() {
 }
 
 getcli() {
+    # Since sonar doesn't provide a formal way of getting all the versions, this
+    # appears to be the best way foward.
+    # https://community.sonarsource.com/t/downloading-latest-version-of-tools/58956
+
+    # Determine the bucket we can examine for file versions
+    sonarBucket=$(curl -sSL https://binaries.sonarsource.com | awk -F\' '/BUCKET_URL/{print $2}')
+
     # Get the latest cli_version of the scanning tool
-    SONAR_VERSION=`curl -s https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/ |grep -o "sonar-scanner-cli-[0-9.]*-linux.zip"|grep ".*-cli-$cli_version.*-linux.zip"|sort -r|uniq|head -n 1`
+    SONAR_VERSION=`curl -sSL ${sonarBucket}\?prefix=Distribution/sonar-scanner-cli/ |grep -o "sonar-scanner-cli-[0-9.]*-linux.zip"|grep ".*-cli-$cli_version.*-linux.zip"|sort -r|uniq|head -n 1`
     echo "Sonar-scanner-cli cli_version: ${SONAR_VERSION}"
     if [[ -z $SONAR_VERSION ]]; then
         echo "Unable to find any versions that match the specified version '${cli_version}'"
